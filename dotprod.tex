@@ -1,0 +1,75 @@
+\documentclass{article}[11pt]
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts}
+
+\title{Dot Products and Cosines}
+
+\begin{document}
+
+\maketitle
+
+\section{Dot Products}
+The \emph{dot product} of two vectors $a, b \in \mathbb{R}^n$ is the sum of the products of their components:
+
+\[ a \cdot b = \sum_{i=0}^{n-1} a_i b_i \]
+
+The dot product is related to the length of a vector by the Pythagorean theorem:
+
+\begin{equation}
+\label{eqn:pythagorean}
+|a|^2 = a \cdot a
+\end{equation}
+
+It is a well known fact that the geometric interpretation of the dot product is that it is the cosine of the angle between the pair of vectors scaled by their lengths:
+
+\begin{equation}
+\label{eqn:dotprodcos}
+a \cdot b = |a| |b| \cos(\theta)
+\end{equation}
+
+From a certain perspective this can be taken to be the defining property of the cosine (as is commonly done in more advanced treatments).  However, that is not the approach adopted in this document.  Instead we will derive Eqn.~\ref{eqn:dotprodcos} from the principles of trigonometry and Euclidean geometry.
+
+\section{Proof of the Dot Product Cosine Rule}
+Consider the length of the difference between $a$ and $b$.  Using Eqn.~\ref{eqn:pythagorean}:
+
+\begin{equation}
+\label{eqn:simpledist}
+|a - b|^2 = a \cdot a - 2 a \cdot b + b \cdot b
+\end{equation}
+
+Now let us derive this quantity in a different way, starting from the following picture:
+
+\includegraphics[width=4in]{triangle.png}
+
+Again using the Pythagorean theorem, we can conclude that:
+
+\begin{equation}
+\label{eqn:righttri}
+|a - b|^2 = |x|^2 + |y|^2
+\end{equation}
+
+Using trigonometry we can see that:
+
+\begin{eqnarray*}
+|x| & = & |a| \sin(\theta) \\
+|y| & = & |b| - |a| \cos(\theta)
+\end{eqnarray*}
+
+Subsituting back into Eqn.~\ref{eqn:righttri} gives:
+
+\begin{eqnarray*}
+|a - b|^2  & = & |a|^2 \sin(\theta)^2 + |a|^2 \cos(\theta)^2 - 2 |a| |b| \cos(\theta) + |b|^2 \\
+& = & |a|^2 - 2 |a| |b| \cos(\theta) + |b|^2
+\end{eqnarray*}
+
+Now we apply Eqn.~\ref{eqn:simpledist}, and see that:
+
+\[  a \cdot a - 2 a \cdot b + b \cdot b = |a|^2 - 2 |a| |b| \cos(\theta) + |b|^2 \]
+
+And applying Eqn.~\ref{eqn:pythagorean} again shows that:
+
+\[ a \cdot b = |a| |b| \cos(\theta) \]
+
+Which completes the proof Eqn.~\ref{eqn:dotprodcos}.
+
+\end{document}
